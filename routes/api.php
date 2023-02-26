@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\TaskController;
 
@@ -17,13 +16,9 @@ use App\Http\Controllers\Api\TaskController;
 |
 */
 
-// Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// Route::middleware(['auth:sanctum'])
-//     ->name('api.')
-//     ->group(function () {
+Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+    return $request->user();
+});
 
         // post
         Route::get('/posts', [PostController::class, 'index']) // 一覧
@@ -42,5 +37,3 @@ use App\Http\Controllers\Api\TaskController;
             ->name('taskUpdate');
         Route::delete('tasks/{id}', [TaskController::class, 'destroy']) // 削除
             ->name('taskDestroy');
-
-// });
