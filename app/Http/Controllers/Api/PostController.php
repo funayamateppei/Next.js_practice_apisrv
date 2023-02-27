@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Post;
 
@@ -16,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return '1';
+        $user = Auth::user();
+        return $user;
     }
 
     public function show(Request $request)
