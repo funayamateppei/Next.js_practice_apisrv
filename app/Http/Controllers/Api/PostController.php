@@ -17,8 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        return $user;
+        $posts = Post::orderby('created_at', 'desc')->get(); // 新しい順で並べる
+        return $posts;
     }
 
     public function show(Request $request)
