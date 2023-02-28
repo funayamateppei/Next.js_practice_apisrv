@@ -18,7 +18,7 @@ class LocalSeeder extends Seeder
     public function run()
     {
         User::factory()->count(10)->create();
-        Post::factory()->count(100)->create();
+        Post::factory()->count(10)->create();
         Task::factory()->count(100)->create();
     }
 }
