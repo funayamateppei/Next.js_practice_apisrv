@@ -29,11 +29,9 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-    // バリデーション
     $validator = Validator::make($request->all(), [
         'title' => 'required | max:191',
     ]);
-    // バリデーション:エラー
     if ($validator->fails()) {
         return response()->noContent();
     }
@@ -57,7 +55,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $validator = Validator::make($request->all(), [
+            'title' => 'required | max:191',
+        ]);
+        if ($validator->fails()) {
+        return response()->noContent();
+        }
+        //データ更新処理
+        $result = Task::find($id)->update($request->all());
+        return response()->noContent();
     }
 
     /**
