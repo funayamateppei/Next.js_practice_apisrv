@@ -16,8 +16,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $all = Task::all();
-        return $all;
+        $tasks = Task::orderby('id', 'asc')->get(); // 新しい順で並べる
+        return $tasks;
     }
 
     /**
@@ -58,6 +58,7 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        
+        $result = Task::find($id)->delete();
+        return response()->noContent();
     }
 }

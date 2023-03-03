@@ -19,6 +19,6 @@ class LocalSeeder extends Seeder
     {
         User::factory()->count(10)->create();
         Post::factory()->count(10)->create();
-        Task::factory()->count(100)->create();
+        Task::factory()->count(10)->create();
     }
 }

@@ -29,11 +29,11 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
         // task
         Route::get('/tasks', [TaskController::class, 'index']) // 一覧
             ->name('tasks');
-        Route::post('tasks', [TaskController::class, 'store']) // 保存
+        Route::post('/tasks', [TaskController::class, 'store']) // 保存
             ->name('taskStore');
         Route::get('/tasks/{id}', [TaskController::class, 'show']) // 詳細
             ->name('taskShow'); 
-        Route::put('tasks/{id}', [TaskController::class, 'update']) // 更新
+        Route::put('/tasks/{id}', [TaskController::class, 'update']) // 更新
             ->name('taskUpdate');
-        Route::delete('tasks/{id}', [TaskController::class, 'destroy']) // 削除
+        Route::delete('/tasks/{id}', [TaskController::class, 'destroy']) // 削除
             ->name('taskDestroy');
