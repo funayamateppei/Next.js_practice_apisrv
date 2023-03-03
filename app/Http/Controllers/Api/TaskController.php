@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -28,7 +29,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    // バリデーション
+    $validator = Validator::make($request->all(), [
+        'title' => 'required | max:191',
+    ]);
+    // バリデーション:エラー
+    if ($validator->fails()) {
+        return response()->noContent();
+    }
+    $result = Task::create($request->all());
+    return response()->noContent();
     }
 
     // 詳細機能
