@@ -40,5 +40,6 @@ Route::delete('/tasks/{id}', [TaskController::class, 'destroy']) // 削除
     ->name('taskDestroy');
 
 // test
-Route::post('/upload', [FileController::class, 'upload'])->name('upload');
+Route::post('/file/upload', [FileController::class, 'upload'])->name('upload');
+Route::get('/file/show', [FileController::class, 'show'])->name('show');
 // Route::get('/test', [FileController::class, 'test'])->name('test');

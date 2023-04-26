@@ -24,8 +24,10 @@ class FileController extends Controller
         return response()->json($response);
     }
 
-    public function showFile(Request $request)
+    public function show(Request $request)
     {
+        $data = Image::get();
+        return response()->json($data);
     }
 
     // public function test()
