@@ -28,10 +28,10 @@ class FileController extends Controller
         $image = $request->file('image');
         $filename = uniqid() . '.' . $image->getClientOriginalExtension();
         $store = $image->storeAs('images', $filename, 's3');
-        $url = Storage::disk('s3')->url($store);
+        // $url = Storage::disk('s3')->url($store);
         // $path = '/storage/' . $store;
         $data = [
-            'path' => $url,
+            'path' => $store,
             'file_name' => $filename,
         ];
         $response = Image::create($data);
