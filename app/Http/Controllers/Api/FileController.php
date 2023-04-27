@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Image;
 
+use Illuminate\Support\Facades\Storage;
+
 class FileController extends Controller
 {
     public function upload(Request $request)
@@ -26,9 +28,10 @@ class FileController extends Controller
         $image = $request->file('image');
         $filename = uniqid() . '.' . $image->getClientOriginalExtension();
         $store = $image->storeAs('images', $filename, 's3');
-        $path = '/storage/' . $store;
+        $url = Storage::disk('s3')->url($store);
+        // $path = '/storage/' . $store;
         $data = [
-            'path' => $path,
+            'path' => $url,
             'file_name' => $filename,
         ];
         $response = Image::create($data);
