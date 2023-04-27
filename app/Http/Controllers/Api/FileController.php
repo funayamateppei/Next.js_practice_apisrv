@@ -11,10 +11,21 @@ class FileController extends Controller
 {
     public function upload(Request $request)
     {
+        // $image = $request->file('image');
+        // Log::debug($image); // 確認用
+        // $filename = uniqid() . '.' . $image->getClientOriginalExtension();
+        // $store = $image->storeAs('images', $filename, 'public');
+        // $path = '/storage/' . $store;
+        // $data = [
+        //     'path' => $path,
+        //     'file_name' => $filename,
+        // ];
+        // $response = Image::create($data);
+        // return response()->json($response);
+
         $image = $request->file('image');
-        Log::debug($image); // 確認用
         $filename = uniqid() . '.' . $image->getClientOriginalExtension();
-        $store = $image->storeAs('images', $filename, 'public');
+        $store = $image->storeAs('images', $filename, 's3');
         $path = '/storage/' . $store;
         $data = [
             'path' => $path,
